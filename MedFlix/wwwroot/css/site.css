@@ -1,22 +1,107 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #10141F;
+    color: #CCCDD2;
+    font-family: "Lato", sans-serif;
+}
+
+.navbar-brand {
+    font-size: 2.25rem;
+}
+
+
+.jumbotron {
+    background-image: url('https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/Slide-1.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    color: white;
+    border-radius: 10px
+}
+
+    .jumbotron .btn-custom {
+        background-color: #7B61FF;
+        color: white;
+    }
+
+
+.owl-carousel .owl-stage-outer{
+    z-index:inherit;
+}
+.carousel-item {
+    display: flex;
+    align-items: center;
+}
+
+
+.number {
+    font-size: 15rem;
+    font-weight: bold;
+    text-align: center;
+    margin-right: -15px;
+    -webkit-text-stroke: 2px #fff;
+    -webkit-text-fill-color: transparent;
+}
+
+.movie-image img {
+    width: 100%;
+    max-width: 300px;
+}
+
+
+/*.carousel {
+    display: flex;
+    gap: 15px;*/
+    /* overflow-x: auto; */
+    /*position: relative;
+}*/
+
+.item-dan {
+    flex: 0 0 auto;
+    width: 200px;
+    transition: transform 0.3s, z-index 0.3s;
+    position: relative;
+}
+
+    .item-dan img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .item-dan:hover {
+        transform: scale(1.3);
+        z-index: 10;
+    }
+
+.details {
+    display: none;
+    position: absolute;
+    top: auto;
+    background: rgba(0, 0, 0, 1);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.item-dan:hover .details {
+    display: block;
 }

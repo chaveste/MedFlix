@@ -1,8 +1,462 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@section Styles
+{
+<link href="~/lib/owlcarousel2/css/owl.carousel.css" rel="stylesheet" /> 
+<link href="~/lib/owlcarousel2/css/owl.theme.default.css" rel="stylesheet" />
+<style>
+        .external-inner {
+            position: absolute;
+            z-index: 999;
+            transform: scale(1);
+            background: var(--background-item);
+            border-bottom-left-radius: .8rem;
+            border-bottom-right-radius: .8rem;
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 100%
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            .external-inner.active {
+                animation: zoomIn .3s both
+            }
+
+            .external-inner .change-speaker {
+                top: 45%;
+                z-index: 1;
+                right: 20px
+            }
+
+            .external-inner .post-media {
+                position: relative;
+                padding-bottom: 56%
+            }
+
+                .external-inner .post-media:before {
+                    background: linear-gradient(rgba(0,3,28,0) 0%,var(--background-item) 89%);
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    content: "";
+                    z-index: 1
+                }
+
+                .external-inner .post-media iframe, .external-inner .post-media video {
+                    transform: scale(1.4)
+                }
+
+                .external-inner .post-media iframe, .external-inner .post-media video, .external-inner .post-media img {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none
+                }
+
+                .external-inner .post-media img {
+                    object-fit: cover
+                }
+
+            .external-inner [name="watchlisted[]"] {
+                display: none
+            }
+
+            .external-inner .post-inner.hover-video .popup-detail {
+                display: block !important;
+                padding: 0 20px 20px
+            }
+
+            .external-inner .post-inner.hover-video .videos-content {
+                display: none
+            }
+
+            .external-inner .post-inner.hover-video .video-cat {
+                display: block
+            }
+
+            .external-inner .post-inner.hover-video .video-play {
+                display: flex
+            }
+
+        .post-inner.hover-video.popup-v2 .video-play .jws-popup-detail {
+            font-size: 20px
+        }
+
+        .post-inner.hover-video .button-custom {
+            background: rgba(255,255,255,.1)
+        }
+
+            .post-inner.hover-video .button-custom:hover {
+                color: var(--heading)
+            }
+
+        .post-inner.hover-video .post-media {
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 10px !important;
+            position: relative
+        }
+
+        .post-inner.hover-video .popup-detail {
+            padding: 0 0 20px;
+            display: none
+        }
+
+        .post-inner.hover-video .video-play {
+            display: none;
+            gap: 10px;
+            margin-top: 20px
+        }
+
+            .post-inner.hover-video .video-play .btn-main {
+                padding-top: 12px;
+                padding-right: 20px;
+                padding-bottom: 12px;
+                padding-left: 20px;
+                font-size: 14px
+            }
+
+        .post-inner.hover-video .video-cat {
+            margin-bottom: 10px;
+            display: none
+        }
+
+            .post-inner.hover-video .video-cat a {
+                color: var(--body);
+                font-size: 14px;
+                line-height: 19px
+            }
+
+                .post-inner.hover-video .video-cat a:not(:first-child):before {
+                    content: '';
+                    width: 2px;
+                    height: 2px;
+                    background: #fff;
+                    opacity: .5;
+                    border-radius: 100%;
+                    display: inline-block;
+                    margin: 0 7px;
+                    vertical-align: middle
+                }
+
+        .post-inner.hover-video .video-meta {
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-sm);
+            margin-bottom: 10px
+        }
+
+            .post-inner.hover-video .video-meta > div {
+                display: inline-block
+            }
+
+                .post-inner.hover-video .video-meta > div:not(:first-child):before {
+                    content: '';
+                    width: 2px;
+                    height: 2px;
+                    background: #fff;
+                    opacity: .5;
+                    border-radius: 100%;
+                    display: inline-block;
+                    margin: 0 7px;
+                    vertical-align: middle
+                }
+
+</style>
+}
+<div class="container">
+    <div class="jumbotron">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-center">
+                    <p class="display-4 fw-bold">¡Suscríbete a nuestro portal de videos!</p>
+                    <p class="lead">Disfruta de contenido exclusivo y novedades en un solo lugar.</p>
+                    <a href="#" class="btn btn-custom btn-lg">Suscríbete ahora</a>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </div>
+    <section>
+    <div class="mt-5 mb-3">
+        <div class="row">
+            <p class="h4 text-white fw-bold">Nuevos lanzamientos</p>
+        </div>
+    </div>
+     <div class="owl-carousel owl-theme">
+         <div class="item hover-video">
+             <div class="post-media" data-trailer="https://customer-342mt1gy0ibqe0dl.cloudflarestream.com/cfb68fa53d7bbc3eaaa36f022b1ad291/downloads/default.mp4">
+                 <a href="https://streamvid.jwsuperthemes.com/movie/john-wick-4/">
+                     <img class="attachment-630x400 size-630x400" alt="" src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2024/12/7I6VUdPj6tQECNHdviJkUHD2u89-scaled-630x400.jpg" style="opacity: 1;">
+                </a>
+            </div>
+        </div>
+        <div class="item hover-video">
+             <div class="post-media" data-trailer="https://customer-342mt1gy0ibqe0dl.cloudflarestream.com/cfb68fa53d7bbc3eaaa36f022b1ad291/downloads/default.mp4">
+                 <a href="https://streamvid.jwsuperthemes.com/movie/john-wick-4/">
+                        <img class="attachment-630x400 size-630x400" alt="" src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/kVd3a9YeLGkoeR50jGEXM6EqseS-1-scaled-630x400.jpg" style="opacity: 1;">
+                </a>
+            </div>
+        </div>
+        <div class="item hover-video">
+             <div class="post-media" data-trailer="https://customer-342mt1gy0ibqe0dl.cloudflarestream.com/cfb68fa53d7bbc3eaaa36f022b1ad291/downloads/default.mp4">
+                 <a href="https://streamvid.jwsuperthemes.com/movie/john-wick-4/">
+                        <img class="attachment-630x400 size-630x400" alt="" src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/house-w-trailer-1-630x400.jpg" style="opacity: 1;">
+                </a>
+            </div>
+        </div>
+        <div class="item hover-video">
+             <div class="post-media" data-trailer="https://customer-342mt1gy0ibqe0dl.cloudflarestream.com/cfb68fa53d7bbc3eaaa36f022b1ad291/downloads/default.mp4">
+                 <a href="https://streamvid.jwsuperthemes.com/movie/john-wick-4/">
+                        <img class="attachment-630x400 size-630x400" alt="" src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/the_post-1-630x400.jpg" style="opacity: 1;">
+                </a>
+            </div>
+        </div>
+            <div class="item hover-video">
+                <div class="post-media" data-trailer="https://customer-342mt1gy0ibqe0dl.cloudflarestream.com/cfb68fa53d7bbc3eaaa36f022b1ad291/downloads/default.mp4">
+                    <a href="https://streamvid.jwsuperthemes.com/movie/john-wick-4/">
+                        <img class="attachment-630x400 size-630x400" alt="" src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/wZwn5rgbhteKhGLsKOgixWYWrCN-scaled-630x400.jpg" style="opacity: 1;">
+                    </a>
+                </div>
+            </div>
+    </div>
+        <div class="external-div">
+            <div class="external-inner"></div>
+        </div>
+    
+     @* <div class="owl-carousel" style="z-index:10 !important">  *@
+     @*    <div class="item"> *@
+     @*        <div class=""> *@
+     @*          <div class="item-dan"> *@
+     @*            <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/the_post-1.jpg" alt="Película 1"> *@
+     @*            <div class="details"> *@
+     @*              <h3>Natalia</h3> *@
+     @*              <button>Agregar a mi lista</button> *@
+     @*              <p>Breve sinopsis de la película...</p> *@
+     @*            </div> *@
+     @*          </div> *@
+     @*      </div>           *@
+     @*    </div> *@
+     @*     <div class="item"> *@
+     @*        <div class=""> *@
+     @*          <div class="item-dan"> *@
+     @*                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2024/12/7I6VUdPj6tQECNHdviJkUHD2u89-scaled.jpg" alt="Película 1"> *@
+     @*            <div class="details"> *@
+     @*              <h3>Título de la Película</h3> *@
+     @*              <button>Agregar a mi lista</button> *@
+     @*              <p>Breve sinopsis de la película...</p> *@
+     @*            </div> *@
+     @*          </div> *@
+     @*      </div>           *@
+     @*    </div> *@
+     @*     <div class="item"> *@
+     @*        <div class=""> *@
+     @*          <div class="item-dan"> *@
+     @*                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/house-w-trailer-1.jpg" alt="Película 1"> *@
+     @*            <div class="details"> *@
+     @*              <h3>Título de la Película</h3> *@
+     @*              <button>Agregar a mi lista</button> *@
+     @*              <p>Breve sinopsis de la película...</p> *@
+     @*            </div> *@
+     @*          </div> *@
+     @*      </div>           *@
+     @*    </div> *@
+     @*     <div class="item"> *@
+     @*        <div class=""> *@
+     @*          <div class="item-dan"> *@
+     @*                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/wZwn5rgbhteKhGLsKOgixWYWrCN-scaled.jpg" alt="Película 1"> *@
+     @*            <div class="details"> *@
+     @*              <h3>Título de la Película</h3> *@
+     @*              <button>Agregar a mi lista</button> *@
+     @*              <p>Breve sinopsis de la película...</p> *@
+     @*            </div> *@
+     @*          </div> *@
+     @*      </div>           *@
+     @*    </div> *@
+     @*        <div class="item"> *@
+     @*            <div class=""> *@
+     @*                <div class="item-dan"> *@
+     @*                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/6Ys6koNajP5ld9EIMfOSQrRquki.jpg" alt="Película 1"> *@
+     @*                    <div class="details"> *@
+     @*                        <h3>Título de la Película</h3> *@
+     @*                        <button>Agregar a mi lista</button> *@
+     @*                        <p>Breve sinopsis de la película...</p> *@
+     @*                    </div> *@
+     @*                </div> *@
+     @*            </div> *@
+     @*        </div> *@
+     @*   </div>  *@
+    </section>
+    <section>
+        <div class="mt-4 mt-3">
+            <div class="row">
+                <p class="h4 text-white fw-bold">Top 10</p>
+            </div>
+        </div>
+        <div class="owl-carousel owl-theme">
+            <!-- Item 1 -->
+            <div class="carousel-item">
+                <div class="number">1</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/love_sky-290x412.jpg" alt="Película 1">
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="carousel-item">
+                <div class="number">2</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/girl_best-290x412.jpg" alt="Película 2">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="number">3</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/my_dogs-290x412.jpg" alt="Película 1">
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="carousel-item">
+                <div class="number">4</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/movies2-290x412.jpg" alt="Película 2">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="number">5</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/love_sky-290x412.jpg" alt="Película 1">
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="carousel-item">
+                <div class="number">6</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/06/girl_best-290x412.jpg" alt="Película 2">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="number">7</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/my_dogs-290x412.jpg" alt="Película 1">
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="carousel-item">
+                <div class="number">8</div>
+                <div class="movie-image">
+                    <img src="https://streamvid.jwsuperthemes.com/wp-content/uploads/2023/02/movies2-290x412.jpg" alt="Película 2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
 </div>
+
+
+@section Scripts {
+ <script src="~/lib/owlcarousel2/js/owl.carousel.js"></script>
+    <script> 
+         $(document).ready(function () { 
+             $('.owl-carousel').owlCarousel({ 
+                 loop: true, 
+                 margin: 10, 
+                 // nav: true, 
+                 responsive: { 
+                     0: { 
+                         items: 1 
+                     }, 
+                     600: { 
+                         items: 4
+                     }, 
+                     1000: { 
+                         items: 4 
+                     } 
+                 } 
+             }) 
+         });
+
+
+        var hideTimer;
+        var checkex = !1;
+        var $this_hover = !1;
+        // if ($(window).width() <= 400) return !1;
+        $(document).on("mouseover", ".item", function () {
+          if (checkex ||!$(this).hasClass("hover-video") || $(".profile-main").hasClass("editor")) {
+            return !1;
+          }
+          var button = $(this);
+          hideTimer = setTimeout(function () {
+            var content = button.clone();
+            $(".external-div .external-inner").html(content).show();
+            var $this = $(".external-div .external-inner");
+            var player = $this.find(".post-media");
+            var $trailer = player.data("trailer");
+            $this.append(
+              '<div class="change-speaker muted"><i class="jws-icon-speaker-x"></i></div>'
+            );
+            // jwsThemeModule.video_init_trailer($trailer, player, $this);
+            var position = button.offset();
+            var width = button.width();
+            var height = button.height();
+            var right_of =
+              $(window).width() - (position.left + button.outerWidth(!0));
+            var origin = "center center";
+            var left = position.left;
+            if (right_of <= button.outerWidth(!0)) {
+              origin = "center right";
+              left = left - 70;
+            }
+            if (right_of <= 0) {
+              origin = "center right";
+              left = $(window).width() - button.outerWidth(!0) - 70;
+            }
+            if (position.left <= button.outerWidth(!0)) {
+              origin = "center left";
+              left = left + 70;
+            }
+            left = left - 70;
+            if (left < 0) {
+              left = 0;
+            }
+            $(".external-div .external-inner")
+              .css({
+                "transform-origin": origin,
+                "transform-scale": "1.1",
+                top: position.top - 40 + "px",
+                left: left + "px",
+                width: width + 140,
+              })
+              .addClass("active");
+            $this_hover = button;
+            $this_hover.addClass("hovered");
+            checkex = !0;
+          }, 800);
+        });
+
+
+
+
+
+        $("body").mousedown(function () {
+          if (hideTimer) {
+            clearTimeout(hideTimer);
+            hideTimer = null;
+          }
+        });
+        $("body").mouseover(function (e) {
+          if (hideTimer) {
+            clearTimeout(hideTimer);
+            hideTimer = null;
+          }
+          if (!$(e.target).parents(".external-div").length && checkex) {
+            $(".external-div .external-inner").hide().empty().removeClass("active");
+            checkex = !1;
+            $this_hover.removeClass("hovered");
+            $this_hover = !1;
+          }
+        });
+     </script>
+}
